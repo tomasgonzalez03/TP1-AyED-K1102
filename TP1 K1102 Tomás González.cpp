@@ -21,7 +21,7 @@ void listado(float kg[][cprod], int cont[], int cantclientes, int cantprod, stri
 
 int posmay(int cantclientes[], int cclientes){
     int pos;
-	int mayor=cantclientes[0];
+    int mayor=cantclientes[0];
     for(int i=0; i<cclientes; ++i){
         if(cantclientes[i] > mayor){
             mayor=cantclientes[i];
@@ -34,23 +34,23 @@ int posmay(int cantclientes[], int cclientes){
 //Punto 2
 void listadoclientes(float km[][cprod], int var[], int seg[], int cclientes, string nclientes[], string nprod[]){
     float a;
-	float b;
-	int pos=posmay(var,cclientes);
+    float b;
+    int pos=posmay(var,cclientes);
     cout << endl << "Listado de Km recorridos por tipo de producto (ascendente):" << endl;
-	
-	do{
-		a=0;
-		for(int i=1; i<cprod; ++i){
-			if(km[pos][i] < km[pos][i-1]){
-				b=km[pos][i-1];
+
+    do{
+	a=0;
+	for(int i=1; i<cprod; ++i){
+	    if(km[pos][i] < km[pos][i-1]){
+		b=km[pos][i-1];
             	km[pos][i-1]=km[pos][i];
             	km[pos][i]=b;
             	b=seg[i-1];
             	seg[i-1]=seg[i];
             	seg[i]=b;
             	a++;
-			}
-        }
+	     }
+         }
     }
     while(a!=0);
     for(int i=0; i<cprod; ++i){
@@ -109,14 +109,14 @@ int main(){
     }
     
     //Punto 1
-	listado(peso, cantclientes, cclientes, cprod, nclientes, nprod);
-	//Punto 2
-	listadoclientes(cantkm, cantclientes, seg, cclientes, nclientes, nprod);
-	//Punto 3
-	entregas(cantkm, cantentregas, seg, cantclientes, cclientes, nclientes, nprod);
+    listado(peso, cantclientes, cclientes, cprod, nclientes, nprod);
+    //Punto 2
+    listadoclientes(cantkm, cantclientes, seg, cclientes, nclientes, nprod);
+    //Punto 3
+    entregas(cantkm, cantentregas, seg, cantclientes, cclientes, nclientes, nprod);
     
-	archilec1.close();
-	archilec2.close();
+    archilec1.close();
+    archilec2.close();
 	
-	return 0;
+    return 0;
 }
